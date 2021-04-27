@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
 from app import db
-from app.routers import twigs
+from app.routers import twigs, syslog
 
 app = FastAPI()
 
@@ -20,5 +20,12 @@ app.include_router(
     twigs.router,
     prefix="/twigs",
     tags=["twigs"],
+    responses={404: {"description": "Not found"}},
+)
+
+app.include_router(
+    syslog.router,
+    prefix="/syslog",
+    tags=["syslog"],
     responses={404: {"description": "Not found"}},
 )

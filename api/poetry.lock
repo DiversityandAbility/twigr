@@ -142,6 +142,14 @@ testing = ["packaging", "importlib-resources"]
 
 [[package]]
 category = "main"
+description = "a modern parsing library"
+name = "lark-parser"
+optional = false
+python-versions = "*"
+version = "0.6.7"
+
+[[package]]
+category = "main"
 description = "A super-fast templating language that borrows the  best ideas from the existing templating languages."
 name = "mako"
 optional = false
@@ -166,14 +174,6 @@ name = "more-itertools"
 optional = false
 python-versions = ">=3.5"
 version = "8.1.0"
-
-[[package]]
-category = "dev"
-description = "Patch asyncio to allow nested event loops"
-name = "nest-asyncio"
-optional = false
-python-versions = ">=3.5"
-version = "1.2.2"
 
 [[package]]
 category = "dev"
@@ -266,20 +266,6 @@ checkqa-mypy = ["mypy (v0.761)"]
 testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "requests", "xmlschema"]
 
 [[package]]
-category = "dev"
-description = "Pytest support for asyncio."
-name = "pytest-asyncio"
-optional = false
-python-versions = ">= 3.5"
-version = "0.10.0"
-
-[package.dependencies]
-pytest = ">=3.0.6"
-
-[package.extras]
-testing = ["async-generator (>=1.3)", "coverage", "hypothesis (>=3.64)"]
-
-[[package]]
 category = "main"
 description = "Extensions to the standard Python datetime module"
 name = "python-dateutil"
@@ -339,6 +325,17 @@ full = ["aiofiles", "graphene", "itsdangerous", "jinja2", "python-multipart", "p
 
 [[package]]
 category = "main"
+description = "Parser for RFC5424-compatible Syslog messages"
+name = "syslog-rfc5424-parser"
+optional = false
+python-versions = "*"
+version = "0.3.2"
+
+[package.dependencies]
+lark-parser = ">=0.6.0,<0.7.0"
+
+[[package]]
+category = "main"
 description = "The lightning-fast ASGI server."
 name = "uvicorn"
 optional = false
@@ -394,7 +391,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["pathlib2", "contextlib2", "unittest2"]
 
 [metadata]
-content-hash = "85ceaae776990c18537d220597e0bb9e5fadfdab407eabd8ee82aa4f4f96fc51"
+content-hash = "cd11f1b81cf3995c771e4e747077381a7d064caf598c9c8e41f8b71ef9fcad71"
 python-versions = "^3.7"
 
 [metadata.files]
@@ -458,6 +455,9 @@ importlib-metadata = [
     {file = "importlib_metadata-1.4.0-py2.py3-none-any.whl", hash = "sha256:bdd9b7c397c273bcc9a11d6629a38487cd07154fa255a467bf704cd2c258e359"},
     {file = "importlib_metadata-1.4.0.tar.gz", hash = "sha256:f17c015735e1a88296994c0697ecea7e11db24290941983b08c9feb30921e6d8"},
 ]
+lark-parser = [
+    {file = "lark-parser-0.6.7.tar.gz", hash = "sha256:062800f3823a6c733ec1d181a2089a22d1f62dbe65f90a3f6b1e6de1934b05ef"},
+]
 mako = [
     {file = "Mako-1.1.0.tar.gz", hash = "sha256:a36919599a9b7dc5d86a7a8988f23a9a3a3d083070023bab23d64f7f1d1e0a4b"},
 ]
@@ -489,15 +489,16 @@ markupsafe = [
     {file = "MarkupSafe-1.1.1-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:ba59edeaa2fc6114428f1637ffff42da1e311e29382d81b339c1817d37ec93c6"},
     {file = "MarkupSafe-1.1.1-cp37-cp37m-win32.whl", hash = "sha256:b00c1de48212e4cc9603895652c5c410df699856a2853135b3967591e4beebc2"},
     {file = "MarkupSafe-1.1.1-cp37-cp37m-win_amd64.whl", hash = "sha256:9bf40443012702a1d2070043cb6291650a0841ece432556f784f004937f0f32c"},
+    {file = "MarkupSafe-1.1.1-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:6788b695d50a51edb699cb55e35487e430fa21f1ed838122d722e0ff0ac5ba15"},
+    {file = "MarkupSafe-1.1.1-cp38-cp38-manylinux1_i686.whl", hash = "sha256:cdb132fc825c38e1aeec2c8aa9338310d29d337bebbd7baa06889d09a60a1fa2"},
+    {file = "MarkupSafe-1.1.1-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:13d3144e1e340870b25e7b10b98d779608c02016d5184cfb9927a9f10c689f42"},
+    {file = "MarkupSafe-1.1.1-cp38-cp38-win32.whl", hash = "sha256:596510de112c685489095da617b5bcbbac7dd6384aeebeda4df6025d0256a81b"},
+    {file = "MarkupSafe-1.1.1-cp38-cp38-win_amd64.whl", hash = "sha256:e8313f01ba26fbbe36c7be1966a7b7424942f670f38e666995b88d012765b9be"},
     {file = "MarkupSafe-1.1.1.tar.gz", hash = "sha256:29872e92839765e546828bb7754a68c418d927cd064fd4708fab9fe9c8bb116b"},
 ]
 more-itertools = [
     {file = "more-itertools-8.1.0.tar.gz", hash = "sha256:c468adec578380b6281a114cb8a5db34eb1116277da92d7c46f904f0b52d3288"},
     {file = "more_itertools-8.1.0-py3-none-any.whl", hash = "sha256:1a2a32c72400d365000412fe08eb4a24ebee89997c18d3d147544f70f5403b39"},
-]
-nest-asyncio = [
-    {file = "nest_asyncio-1.2.2-py3-none-any.whl", hash = "sha256:0a05c8dbd27a02d14da773333c98ea069dee8079f8de7acb60dd0f46bfa2f845"},
-    {file = "nest_asyncio-1.2.2.tar.gz", hash = "sha256:e58a545f1d4c5451757074d577a9193a7be87357785c89c691c03cec4b221c1a"},
 ]
 packaging = [
     {file = "packaging-20.0-py2.py3-none-any.whl", hash = "sha256:aec3fdbb8bc9e4bb65f0634b9f551ced63983a529d6a8931817d52fdd0816ddb"},
@@ -569,10 +570,6 @@ pytest = [
     {file = "pytest-5.3.3-py3-none-any.whl", hash = "sha256:9f8d44f4722b3d06b41afaeb8d177cfbe0700f8351b1fc755dd27eedaa3eb9e0"},
     {file = "pytest-5.3.3.tar.gz", hash = "sha256:f5d3d0e07333119fe7d4af4ce122362dc4053cdd34a71d2766290cf5369c64ad"},
 ]
-pytest-asyncio = [
-    {file = "pytest-asyncio-0.10.0.tar.gz", hash = "sha256:9fac5100fd716cbecf6ef89233e8590a4ad61d729d1732e0a96b84182df1daaf"},
-    {file = "pytest_asyncio-0.10.0-py3-none-any.whl", hash = "sha256:d734718e25cfc32d2bf78d346e99d33724deeba774cc4afdf491530c6184b63b"},
-]
 python-dateutil = [
     {file = "python-dateutil-2.8.1.tar.gz", hash = "sha256:73ebfe9dbf22e832286dafa60473e4cd239f8592f699aa5adaf10050e6e1823c"},
     {file = "python_dateutil-2.8.1-py2.py3-none-any.whl", hash = "sha256:75bb3f31ea686f1197762692a9ee6a7550b59fc6ca3a1f4b5d7e32fb98e2da2a"},
@@ -593,6 +590,10 @@ sqlalchemy = [
 ]
 starlette = [
     {file = "starlette-0.12.9.tar.gz", hash = "sha256:c2ac9a42e0e0328ad20fe444115ac5e3760c1ee2ac1ff8cdb5ec915c4a453411"},
+]
+syslog-rfc5424-parser = [
+    {file = "syslog-rfc5424-parser-0.3.2.tar.gz", hash = "sha256:80a9239d4da404a271266000f4c5f00a183af3d03d53d19d7052c8272430bee9"},
+    {file = "syslog_rfc5424_parser-0.3.2-py3-none-any.whl", hash = "sha256:6134ee1958da89ab7f8d32ed5370a49ddabcc99d75a950b6ec59708417f20a7a"},
 ]
 uvicorn = [
     {file = "uvicorn-0.11.1-py3-none-any.whl", hash = "sha256:d07129d98440ef69e4fd3aaebf16ab9b96cbcdffd813b9889bf8ec001351f4b8"},

@@ -37,7 +37,6 @@ async def find_twigs(
     for exp in filters:
         query = query.where(exp)
     query = query.order_by(twigs.c.added_on.desc())
-    print(str(query))
     return await database.fetch_all(query=query)
 
 
